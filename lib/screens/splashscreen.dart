@@ -16,34 +16,37 @@ class SplashScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Spacer(
-          flex: 30,
+          flex: 40,
         ),
         Center(
-          child: SvgPicture.asset(
-            "assets/svgs/pdf.svg",
-            height: Get.height * 0.2,
+          child: Image.asset(
+            "assets/png/pdf.png",
+            height: Get.height * 0.25,
+            color: Colors.red.shade900,
           ),
         ),
         const Spacer(
           flex: 5,
         ),
         const Text(
-          "PDFMaker",
+          "Scan to PDF",
           style: TextStyle(fontSize: 30),
         ),
         const Spacer(
           flex: 50,
         ),
-        // const Align(
-        //   alignment: Alignment.bottomCenter,
-        //   child: Text("Designed by Jayesh Ghadge"),
-        // ),
+        const Align(
+          alignment: Alignment.bottomCenter,
+          child: Text("Designed by Jayesh Ghadge"),
+        ),
         const Spacer(
-          flex: 6,
+          flex: 1,
         ),
         const Align(
           alignment: Alignment.bottomCenter,
-          child: Text("Made with ❤️ in India"),
+          child: Text(
+            "Made with ❤️ in India",
+          ),
         ),
         const SizedBox(
           height: 10,

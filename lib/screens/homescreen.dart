@@ -18,7 +18,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(" PDFMaker "),
+        title: const Text(
+          "Scan to PDF",
+          style: TextStyle(color: Colors.black),
+        ),
         actions: [
           IconButton.outlined(
               onPressed: () => _pdfController.listPdfFiles(),
@@ -46,10 +49,11 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red.shade700,
         onPressed: () {
           stateController.newPdfCreation();
         },
-        child: const Icon(Icons.add_a_photo_outlined),
+        child: const Icon(Icons.add_a_photo_outlined, color: Colors.white),
       ),
       body: Obx(() {
         if (_pdfController.pdfFiles.isEmpty) {
@@ -74,8 +78,8 @@ class HomeScreen extends StatelessWidget {
                               ));
                         },
                         child: Card(
-                          child: SvgPicture.asset(
-                            "assets/svgs/pdf.svg",
+                          child: Image.asset(
+                            "assets/png/pdf.png",
                             height: Get.height * 0.1,
                           ),
                         ),

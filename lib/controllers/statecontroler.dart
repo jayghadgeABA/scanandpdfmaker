@@ -167,19 +167,20 @@ class StateController extends GetxController {
   }
 
   Future<void> launchDevProfile() async {
-    if (!await launchUrl(Uri.parse("https://www.linkedin.com/in/spandey25/"))) {
+    if (!await launchUrl(
+        Uri.parse("https://www.linkedin.com/in/jayesh-ghadge/"))) {
       Get.snackbar("Error", "Error launching URL");
       throw Exception(
-          'Could not launch https://www.linkedin.com/in/spandey25/');
+          'Could not launch https://www.linkedin.com/in/jayesh-ghadge/');
     }
   }
 
   Future<void> privacyPolicyLauncher() async {
     if (!await launchUrl(Uri.parse(
-        "https://www.termsfeed.com/live/ca680dc9-24c5-42af-91ff-36f6761d312b"))) {
+        "https://www.termsfeed.com/live/02b38606-2789-48b5-861c-a54b4a8b1be5"))) {
       Get.snackbar("Error", "Error launching URL");
       throw Exception(
-          'Could not launch https://www.termsfeed.com/live/ca680dc9-24c5-42af-91ff-36f6761d312b');
+          'Could not launch https://www.termsfeed.com/live/02b38606-2789-48b5-861c-a54b4a8b1be5');
     }
   }
 

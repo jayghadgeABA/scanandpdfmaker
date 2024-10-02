@@ -6,7 +6,7 @@
 <!-- For Android 11 and above -->
 <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <application
-        android:label="scan_and_pdf_maker"
+        android:label="Scan to PDF"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
