@@ -9,10 +9,11 @@ class PDFScreen extends StatefulWidget {
 
   const PDFScreen({super.key, this.path});
 
-  _PDFScreenState createState() => _PDFScreenState();
+  @override
+  PDFScreenState createState() => PDFScreenState();
 }
 
-class _PDFScreenState extends State<PDFScreen> with WidgetsBindingObserver {
+class PDFScreenState extends State<PDFScreen> with WidgetsBindingObserver {
   final Completer<PDFViewController> _controller =
       Completer<PDFViewController>();
   int? pages = 0;
@@ -24,7 +25,7 @@ class _PDFScreenState extends State<PDFScreen> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.path!.split('/').last), 
+        title: Text(widget.path!.split('/').last),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.share),

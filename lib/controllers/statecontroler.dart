@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:open_settings_plus/core/open_settings_plus.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -22,6 +23,8 @@ class StateController extends GetxController {
   late PdfController _pdfController;
   late pw.Document pdf;
   final filenameController = TextEditingController();
+
+  final ImagePicker _picker = ImagePicker(); // Initialize ImagePicker
 
   static const String _pdfFolderName = 'PDFs';
 
@@ -223,7 +226,7 @@ class StateController extends GetxController {
             break;
           }
         }
-        newPath = "$newPath/PDFMaker";
+        newPath = "$newPath/ScanToPDF";
         downloadDirectory = Directory(newPath);
         print(downloadDirectory.path);
 
@@ -269,5 +272,60 @@ class StateController extends GetxController {
     } catch (e) {
       Get.snackbar("Error", "Error saving file: $e");
     }
+  }
+
+  // Method to select images from the gallery and create PDF
+  Future<void> pickImagesFromGallery() async {
+    final List<XFile>? images = await _picker.pickMultiImage();
+    if (images == null || images.isEmpty) {
+      Get.snackbar("Error", "No images selected");
+      return;
+    }
+
+    pdf = pw.Document();
+    for (var image in images) {
+      final imageData = File(image.path).readAsBytesSync();
+      final pwImage = pw.MemoryImage(imageData);
+      pdf.addPage(
+        pw.Page(
+          margin: const pw.EdgeInsets.all(10),
+          build: (context) =>
+              pw.Center(child: pw.Image(pwImage, fit: pw.BoxFit.contain)),
+        ),
+      );
+    }
+
+    final pdfData = await pdf.save();
+    Get.snackbar("Success", "Your PDF from gallery images is created");
+
+    // Save PDF to the device
+    savePdfToFile(pdfData);
+  }
+
+  Future<void> savePdfToFile(Uint8List pdfData) async {
+    final path = await getAppDirectory();
+    Get.defaultDialog(
+      title: "Give Pdf Name",
+      content: TextField(
+        controller: filenameController,
+      ),
+      confirm: ElevatedButton(
+        onPressed: () {
+          Get.back();
+        },
+        child: const Text("Save"),
+      ),
+    ).then((_) {
+      final filename = filenameController.text.isEmpty
+          ? const Uuid().v4()
+          : filenameController.text;
+      File('$path/$filename.pdf')
+          .writeAsBytes(pdfData, flush: true)
+          .then((file) {
+        filenameController.clear();
+        print('PDF saved to: ${file.path}');
+      });
+      _pdfController.listPdfFiles();
+    });
   }
 }

@@ -3,7 +3,7 @@
 
 ## Hii 🙋‍♂️ there i am Jayesh this is my Flutter Project through which i had learnt file management using flutter libraries
 
-This is a android app created using flutter for make easof making PDFS from scanning images 
+This is a android app created using flutter for make easof making PDFs from scanning images 
 
 ## Features
 
@@ -11,7 +11,6 @@ This is a android app created using flutter for make easof making PDFS from scan
 - ✅ Auto delete 30 days old files app specific folder
 - ✅ Able to save in downloads folder
 - ✅ Able to share directly from app itself
-19647E
 
 
 ## Installation

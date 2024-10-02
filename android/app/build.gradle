@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.sreyah.scan_and_pdf_maker"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = '25.1.8937393'
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
