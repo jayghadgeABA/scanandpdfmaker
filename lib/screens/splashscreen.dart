@@ -34,10 +34,10 @@ class SplashScreen extends StatelessWidget {
         const Spacer(
           flex: 50,
         ),
-        const Align(
-          alignment: Alignment.bottomCenter,
-          child: Text("Designed by Jayesh Ghadge"),
-        ),
+        // const Align(
+        //   alignment: Alignment.bottomCenter,
+        //   child: Text("Designed by Jayesh Ghadge"),
+        // ),
         const Spacer(
           flex: 1,
         ),

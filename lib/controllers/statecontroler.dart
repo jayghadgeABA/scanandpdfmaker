@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:cunning_document_scanner/cunning_document_scanner.dart';
@@ -124,7 +125,7 @@ class StateController extends GetxController {
               .writeAsBytes(pdfData, flush: true)
               .then((file) {
             filenameController.clear();
-            print('PDF saved to: ${file.path}');
+            log('PDF saved to: ${file.path}');
           });
           _pdfController.listPdfFiles();
         });
@@ -220,7 +221,7 @@ class StateController extends GetxController {
         for (int i = 1; i < folders.length; i++) {
           String folder = folders[i];
           if (folder != "Android") {
-            print(folder);
+            log(folder);
             newPath += "/$folder";
           } else {
             break;
@@ -228,7 +229,7 @@ class StateController extends GetxController {
         }
         newPath = "$newPath/ScanToPDF";
         downloadDirectory = Directory(newPath);
-        print(downloadDirectory.path);
+        log(downloadDirectory.path);
 
         try {
           if (!await downloadDirectory.exists()) {
@@ -323,7 +324,7 @@ class StateController extends GetxController {
           .writeAsBytes(pdfData, flush: true)
           .then((file) {
         filenameController.clear();
-        print('PDF saved to: ${file.path}');
+        log('PDF saved to: ${file.path}');
       });
       _pdfController.listPdfFiles();
     });

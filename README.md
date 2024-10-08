@@ -1,7 +1,7 @@
 # Scan and PDF Maker app using Flutter and Dart 
 
 
-## Hii 🙋‍♂️ there i am Jayesh this is my Flutter Project through which i had learnt file management using flutter libraries
+## Hii 🙋‍♂️ there i am Jayesh this is my Flutter Project.
 
 This is a android app created using flutter for make easof making PDFs from scanning images 
 

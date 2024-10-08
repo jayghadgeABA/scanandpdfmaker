@@ -48,9 +48,9 @@ class PDFScreenState extends State<PDFScreen> with WidgetsBindingObserver {
             fitPolicy: FitPolicy.BOTH,
             preventLinkNavigation:
                 false, // if set to true the link is handled in flutter
-            onRender: (_pages) {
+            onRender: (pagesLocal) {
               setState(() {
-                pages = _pages;
+                pages = pagesLocal;
                 isReady = true;
               });
             },
@@ -58,22 +58,17 @@ class PDFScreenState extends State<PDFScreen> with WidgetsBindingObserver {
               setState(() {
                 errorMessage = error.toString();
               });
-              print(error.toString());
             },
             onPageError: (page, error) {
               setState(() {
                 errorMessage = '$page: ${error.toString()}';
               });
-              print('$page: ${error.toString()}');
             },
             onViewCreated: (PDFViewController pdfViewController) {
               _controller.complete(pdfViewController);
             },
-            onLinkHandler: (String? uri) {
-              print('goto uri: $uri');
-            },
+            onLinkHandler: (String? uri) {},
             onPageChanged: (int? page, int? total) {
-              print('page change: $page/$total');
               setState(() {
                 currentPage = page;
               });
